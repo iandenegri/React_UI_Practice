@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import './App.css';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
-import './App.css';
+import Home from './components/home/Home';
+import Faq from './components/faq/Faq';
+import { Route } from 'react-router-dom';
+
+
 
 class App extends Component {
 
@@ -11,6 +16,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+
+        <Route exact={true} path="/" component={Home} />
+        <Route path="/faq" component={Faq} />
 
         <Footer />
       </div>
