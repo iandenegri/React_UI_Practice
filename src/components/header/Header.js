@@ -4,9 +4,23 @@ import { Link } from 'react-router-dom';
 
 class Header extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: false};
 
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }))
+  }
 
   render() {
+
+    let menuActive = this.state.isToggleOn ? 'is-active' : '';
+
     return (
       <div className="navbar has-shadow">
         <div className="container">
@@ -14,14 +28,16 @@ class Header extends Component {
             <Link to="/" className="navbar-item">
               MyCompany
             </Link>
-            <span className="navbar-burger">
+
+            <span className={"navbar-burger "+menuActive} onClick={this.handleClick}>
               <span></span>
               <span></span>
               <span></span>
             </span>
+
           </div>
 
-          <div className="navbar-end navbar-menu">
+          <div className={ 'navbar-end navbar-menu '+menuActive }>
 
             <Link to="/" className="navbar-item r-item">Home</Link>
             <Link to="/FAQ" className="navbar-item r-item">Features</Link>
